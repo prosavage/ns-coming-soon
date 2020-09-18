@@ -24,12 +24,28 @@ const GlobalStyle = createGlobalStyle`
     }
 
     p {
-        font-size: 20px;
+        font-size: 1rem;
         line-height: 29px;
     }
 
     h1 {
-        font-size: 70px;
+        font-size: 3.5rem;
+
+       
+    }
+
+    input {
+        outline: none;
+        border: white;
+        background: ${(props: PropsTheme) => props.theme.background};
+        border-radius: 5px;
+        box-shadow: 0px 15px 31px ${(props: PropsTheme) => props.theme.boxShadowAccentColor};
+        color: ${(props: PropsTheme) => props.theme.colorSecondary};
+        padding: 15px;
+    }
+
+    button {
+        padding: 15px;
     }
 
 

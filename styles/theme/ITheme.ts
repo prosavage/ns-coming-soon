@@ -1,8 +1,12 @@
 interface ITheme {
     background: string,
+    backgroundImageColor: string,
     boxShadowColor: string,
-    color: string;
-    accentColor: string
+    boxShadowAccentColor: string,
+    color: string,
+    colorSecondary: string,
+    accentColor: string,
+    accentColorSecondary: string
 }
 
 export default ITheme;

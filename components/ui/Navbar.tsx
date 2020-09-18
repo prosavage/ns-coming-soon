@@ -68,6 +68,9 @@ export default function Navbar(props) {
 }
 
 const Wrapper = styled.div`
+    z-index:0;
+    position: absolute;
+    top: 0;
     width: 100vw;
     display: flex;
     flex-direction: column;
