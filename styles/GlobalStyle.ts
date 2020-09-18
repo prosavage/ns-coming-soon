@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
 
     button {
         padding: 15px;
+        cursor: pointer;
     }
 
 

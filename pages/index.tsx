@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import styled from "styled-components";
 import PropsTheme from '../styles/theme/PropsTheme';
+import {useRouter} from "next/router";
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <Wrapper>
       <ContentContainer>
@@ -11,7 +15,7 @@ export default function Home() {
         <NotifyContainer>
           <SizedInput placeholder="Enter your email" type="text" />
           <PrimaryButton><strong>Notify me</strong></PrimaryButton>
-          <SecondaryButton><strong>FAQ</strong></SecondaryButton>
+          <SecondaryButton onClick={() => router.push("/faq")}><strong>FAQ</strong></SecondaryButton>
         </NotifyContainer>
       </ContentContainer>
       <SplashImage src="/img/home-splash.png" alt=""/>
@@ -29,7 +33,10 @@ const Wrapper = styled.div`
 
   @media(max-width: 1100px) {
     flex-direction: column;
-    justify-content: flex-start;
+  }
+
+  @media(max-width: 400px) {
+    justify-content: center;
   }
 `
 
@@ -40,7 +47,7 @@ const SplashImage = styled.img`
     height: 250px;
   }
 
-  @media(max-width: 400px) {
+  @media(max-width: 500px) {
     display: none;
   }
 `

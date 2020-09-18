@@ -6,6 +6,8 @@ import PropsTheme from "../../styles/theme/PropsTheme";
 import ActiveLink from "./../ActiveLink"
 import { ThemeContext } from "styled-components"
 import { useContext } from "react";
+import { useRouter } from "next/router";
+import { route } from "next/dist/next-server/server/router";
 const links = [
     {
         link: "/",
@@ -24,6 +26,7 @@ const links = [
 export default function Navbar(props) {
 
     const themeContext = useContext(ThemeContext);
+    const router = useRouter();
 
     const getLogoPath = () => {
         return themeContext === DarkTheme ? "logo-dark.svg" : "logo-light.svg"
@@ -52,7 +55,7 @@ export default function Navbar(props) {
     return (
         <Wrapper>
             <LogoSection>
-                <Logo src={`/img/navbar/${getLogoPath()}`} />
+                <Logo onClick={() => router.push("/")} src={`/img/navbar/${getLogoPath()}`} />
                 {!isDesktop() && <HamburgerButton onClick={() => setToggled(!toggled)} />}
             </LogoSection>
             {(toggled || isDesktop()) && <LinksWrapper>
@@ -116,6 +119,8 @@ const Logo = styled.img`
     width: auto;
     height: 3em;
     padding: 10px;
+
+    cursor: pointer;
 
     @media(min-width: 1000px) {
         padding-left: 105px;
