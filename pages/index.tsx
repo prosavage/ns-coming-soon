@@ -29,6 +29,7 @@ const Wrapper = styled.div`
 
   @media(max-width: 1100px) {
     flex-direction: column;
+    justify-content: flex-start;
   }
 `
 
@@ -49,8 +50,6 @@ const ContentContainer = styled.div`
   flex-direction: column;
 
   @media(max-width: 700px) {
-    justify-content: center;
-    align-items: center;
     text-align: center;
   }
 `

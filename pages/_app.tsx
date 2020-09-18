@@ -22,10 +22,6 @@ function MyApp({ Component, pageProps }) {
         <PageContainer>
           <Component {...pageProps} />
           <PageBackgroundImage alt="" />
-          <BackgroundLine>
-            <BackgroundLineLeft />
-            <BackgroundLineRight />
-          </BackgroundLine>
           <ThemeToggleContainer
             onClick={() => {
               setDarkTheme(!darkTheme)
@@ -34,6 +30,10 @@ function MyApp({ Component, pageProps }) {
             {darkTheme ? <Moon /> : <Sun />}
           </ThemeToggleContainer>
         </PageContainer>
+        <BackgroundLine>
+            <BackgroundLineLeft />
+            <BackgroundLineRight />
+          </BackgroundLine>
       </ThemeProvider>
     </Wrapper>
   );
@@ -48,6 +48,7 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 50px;
 `;
 
 const PageBackgroundImage = styled.svg`
@@ -73,13 +74,13 @@ const PageBackgroundImage = styled.svg`
 `
 
 const BackgroundLine = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   height: 10px;
   display: flex;
   flex-direction: row;
+  z-index:0;
 `
 const BackgroundLineLeft = styled.div`
   height: 100%;
