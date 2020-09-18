@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  @media(max-width: 1100px) {
+  @media(max-width: 1300px) {
     flex-direction: column;
   }
 
@@ -44,12 +44,9 @@ const SplashImage = styled.img`
   height: 450px;
 
   @media(max-width: 700px) {
-    height: 250px;
-  }
-
-  @media(max-width: 500px) {
     display: none;
   }
+
 `
 
 const ContentContainer = styled.div`
