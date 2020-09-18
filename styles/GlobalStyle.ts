@@ -4,7 +4,6 @@ import PropsTheme from "./theme/PropsTheme";
 const GlobalStyle = createGlobalStyle`
 
     body {
-        transition: 250ms all;
         color: ${(props: PropsTheme) => props.theme.color};
         background: ${(props: PropsTheme) => props.theme.background};
         padding: 0;
