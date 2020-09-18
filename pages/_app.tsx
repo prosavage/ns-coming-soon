@@ -101,7 +101,7 @@ const Wrapper = styled.div`
 
 const ThemeToggleContainer = styled.div`
   /* Positioning. */
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
   
