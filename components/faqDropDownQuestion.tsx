@@ -22,6 +22,8 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 3px 0;
+
+    cursor: pointer;
 `
 
 const Header = styled.div`
