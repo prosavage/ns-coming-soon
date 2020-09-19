@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ChevronDown } from "react-feather";
+import { ChevronDown, ChevronUp } from "react-feather";
 import PropsTheme from "../styles/theme/PropsTheme";
 import { useState } from "react";
 
@@ -10,7 +10,7 @@ export default function DropDownQuestion(props) {
     return <Wrapper>
         <Header onClick={() => setOpen(!open)}>
             <p>{props.question}</p>
-            <ChevronDown />
+            {open ? <ChevronUp /> : <ChevronDown />}
         </Header>
         {open && <DropDown>
             {props.answer}
