@@ -1,22 +1,26 @@
 import styled from "styled-components";
 import PropsTheme from "../styles/theme/PropsTheme";
 import { Download } from "react-feather";
+import { useRouter } from "next/router";
 
 export default function Contact(props) {
-    return <Wrapper>
-        <ContentContainer>
-            <h1>Press Kit</h1>
-            <p>Interested in writing about us? We’re flattered. Here’s a little something to help you represent our brand.</p>
-            <SecondaryButton><Download/><strong>Download Press Kit</strong></SecondaryButton>
-        </ContentContainer>
-        <ContentContainer>
-            <h1>Contact us</h1>
-            <ContactInput placeholder="Name" type="text"/>
-            <ContactInput placeholder="Email address" type="text"/>
-            <ContactTextArea rows={7} placeholder="Your message"/>
-            <PrimaryButton><strong>Send It &rarr;</strong></PrimaryButton>
-        </ContentContainer>
-    </Wrapper>
+
+  const router = useRouter();
+
+  return <Wrapper>
+    <ContentContainer>
+      <h1>Press Kit</h1>
+      <p>Interested in writing about us? We’re flattered. Here’s a little something to help you represent our brand.</p>
+      <SecondaryButton onClick={() => router.push("/branding/branding-kit.zip")}><Download/><strong>Download Press Kit</strong></SecondaryButton>
+    </ContentContainer>
+    <ContentContainer>
+      <h1>Contact us</h1>
+      <ContactInput placeholder="Name" type="text" />
+      <ContactInput placeholder="Email address" type="text" />
+      <ContactTextArea rows={7} placeholder="Your message" />
+      <PrimaryButton><strong>Send It &rarr;</strong></PrimaryButton>
+    </ContentContainer>
+  </Wrapper>
 }
 
 const Wrapper = styled.div`
