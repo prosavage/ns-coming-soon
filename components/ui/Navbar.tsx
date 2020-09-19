@@ -29,7 +29,7 @@ export default function Navbar(props) {
     const router = useRouter();
 
     const getLogoPath = () => {
-        return themeContext === DarkTheme ? "logo-dark.svg" : "logo-light.svg"
+        return themeContext === DarkTheme ? "logo-dark.png" : "logo-light.png"
     }
 
     const [toggled, setToggled] = useState(false);
@@ -72,12 +72,13 @@ export default function Navbar(props) {
 
 const Wrapper = styled.div`
     position: fixed;
+    min-height: 100px;
     top: 0;
     width: 100vw;
     display: flex;
     flex-direction: column;
     padding: 0 0.5em;
-    /* This will basically push everything to left and right. */
+    /* Center all the things */
     justify-content: center;
 
     /* Want a line instead of shadow in dark mode. */
@@ -117,7 +118,7 @@ const HamburgerButton = styled.div`
 
 const Logo = styled.img`
     width: auto;
-    height: 3em;
+    height: 4em;
     padding: 10px;
 
     cursor: pointer;

@@ -29,11 +29,9 @@ const GlobalStyle = createGlobalStyle`
 
     h1 {
         font-size: 3.5rem;
-
-       
     }
 
-    input {
+    input, textarea {
         outline: none;
         border: white;
         background: ${(props: PropsTheme) => props.theme.background};
@@ -41,6 +39,8 @@ const GlobalStyle = createGlobalStyle`
         box-shadow: 0px 15px 31px ${(props: PropsTheme) => props.theme.boxShadowAccentColor};
         color: ${(props: PropsTheme) => props.theme.colorSecondary};
         padding: 15px;
+
+        font-family: 'Roboto', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
     button {
