@@ -6,6 +6,7 @@ import { useState } from "react";
 import NotificationContainer from '../context/NotificationContext';
 import NotificationType from '../context/NotificationType';
 import Axios from 'axios';
+
 export default function Home() {
 
   const router = useRouter();
@@ -15,6 +16,9 @@ export default function Home() {
 
   return (
     <Wrapper>
+      <Head>
+        <title>Notesets</title>
+      </Head>
       <ContentContainer>
         <h1>The new way to study.</h1>
         <br />

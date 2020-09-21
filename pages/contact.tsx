@@ -2,12 +2,16 @@ import styled from "styled-components";
 import PropsTheme from "../styles/theme/PropsTheme";
 import { Download } from "react-feather";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Contact(props) {
 
   const router = useRouter();
 
   return <Wrapper>
+    <Head>
+      <title>Notesets Contact Us</title>
+    </Head>
     <ContentContainer>
       <h1>Press Kit</h1>
       <p>Interested in writing about us? We’re flattered. Here’s a little something to help you represent our brand.</p>
