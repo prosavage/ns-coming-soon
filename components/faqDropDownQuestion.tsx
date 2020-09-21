@@ -20,7 +20,7 @@ export default function DropDownQuestion(props) {
     </Wrapper >
 }
 
-const Wrapper = styled(motion.div)`
+const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin: 3px 0;

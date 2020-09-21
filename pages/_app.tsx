@@ -50,8 +50,20 @@ function MyApp({ Component, pageProps }) {
 function NotificationWrapper(props) {
   const notifContext = NotificationContainer.useContainer();
   const themeContext: ITheme = useContext(ThemeContext)
+  const getColor = () => {
+    return notifContext.notif.type === NotificationType.SUCCESS ? themeContext.notifSuccessColor : themeContext.notifWarnColor
+  }
 
-  const NotifyMessage = styled.div`
+  return (
+    <>
+      {notifContext.notif.type !== undefined && <NotifyMessage color={getColor()}>
+        {notifContext.notif.message}
+      </NotifyMessage>}
+    </>
+  )
+}
+
+const NotifyMessage = styled.div`
     position: fixed;
     bottom: 30px;
     left: 10px;
@@ -66,23 +78,6 @@ function NotificationWrapper(props) {
     border-radius: 5px;
     z-index:2;
 `
-
-  const getColor = () => {
-    console.log(notifContext.notif)
-    return notifContext.notif.type === NotificationType.SUCCESS ? themeContext.notifSuccessColor : themeContext.notifWarnColor
-  }
-
-  return (
-    <>
-      {console.log(notifContext.notif)}
-      {notifContext.notif.type !== undefined && <NotifyMessage color={getColor()}>
-        {notifContext.notif.message}
-      </NotifyMessage>}
-    </>
-  )
-}
-
-
 
 const PageContainer = styled.div`
   height: 100%;
