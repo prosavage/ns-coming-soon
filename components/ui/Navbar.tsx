@@ -118,9 +118,8 @@ const HamburgerButton = styled.div`
 
 const Logo = styled.img`
     width: auto;
-    height: 4em;
-    padding: 10px;
-
+    height: 50px;
+    width: auto;
     cursor: pointer;
 
     @media(min-width: 1000px) {

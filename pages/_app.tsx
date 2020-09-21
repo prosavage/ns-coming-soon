@@ -19,21 +19,21 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={getTheme()}>
         <GlobalStyle />
         <Navbar />
-        <PageContainer>
-          <Component {...pageProps} />
-          <PageBackgroundImage alt="" />
-          <ThemeToggleContainer
-            onClick={() => {
-              setDarkTheme(!darkTheme)
-            }}
-          >
-            {darkTheme ? <Moon /> : <Sun />}
-          </ThemeToggleContainer>
-        </PageContainer>
+          <PageContainer>
+            <Component {...pageProps} />
+            <PageBackgroundImage alt="" />
+            <ThemeToggleContainer
+              onClick={() => {
+                setDarkTheme(!darkTheme)
+              }}
+            >
+              {darkTheme ? <Moon /> : <Sun />}
+            </ThemeToggleContainer>
+          </PageContainer>
         <BackgroundLine>
-            <BackgroundLineLeft />
-            <BackgroundLineRight />
-          </BackgroundLine>
+          <BackgroundLineLeft />
+          <BackgroundLineRight />
+        </BackgroundLine>
       </ThemeProvider>
     </Wrapper>
   );

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useContext } from 'react';
+import { SyntheticEvent, useContext } from 'react';
 import { ThemeContext } from "styled-components";
 import ITheme from '../styles/theme/ITheme';
 
@@ -14,7 +14,7 @@ function ActiveLink({ children, href }) {
         href ? 700 : 400
     }
 
-    const handleClick = (e) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault()
         router.push(href)
     }

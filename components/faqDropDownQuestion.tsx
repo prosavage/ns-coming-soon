@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ChevronDown, ChevronUp } from "react-feather";
 import PropsTheme from "../styles/theme/PropsTheme";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function DropDownQuestion(props) {
 
@@ -12,13 +13,18 @@ export default function DropDownQuestion(props) {
             <p>{props.question}</p>
             {open ? <ChevronUp /> : <ChevronDown />}
         </Header>
-        {open && <DropDown>
-            {props.answer}
-        </DropDown>}
-    </Wrapper>
+        <AnimatePresence>
+            {open &&
+                <DropDown
+                    layout
+                >
+                    {props.answer}
+                </DropDown>}
+        </AnimatePresence>
+    </Wrapper >
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
     display: flex;
     flex-direction: column;
     margin: 3px 0;
@@ -36,7 +42,7 @@ const Header = styled.div`
     
 `
 
-const DropDown = styled.div`
+const DropDown = styled(motion.div)`
     display: flex;
     padding: 10px;
     border: 2px solid ${(props: PropsTheme) => props.theme.color};
