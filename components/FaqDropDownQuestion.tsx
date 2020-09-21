@@ -38,7 +38,7 @@ const Header = styled.div`
     
 `
 
-const DropDown = styled(motion.div)`
+const DropDown = styled.div`
     display: flex;
     padding: 10px;
     border: 2px solid ${(props: PropsTheme) => props.theme.color};
