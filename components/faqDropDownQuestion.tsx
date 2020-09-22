@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { ChevronDown, ChevronUp } from "react-feather";
 import PropsTheme from "../styles/theme/PropsTheme";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 
 export default function DropDownQuestion(props) {
 
@@ -13,14 +12,11 @@ export default function DropDownQuestion(props) {
             <p>{props.question}</p>
             {open ? <ChevronUp /> : <ChevronDown />}
         </Header>
-        <AnimatePresence>
             {open &&
                 <DropDown
-                    layout
                 >
                     {props.answer}
                 </DropDown>}
-        </AnimatePresence>
     </Wrapper >
 }
 
