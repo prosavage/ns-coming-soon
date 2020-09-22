@@ -20,25 +20,28 @@ export default function Home() {
         <br />
         <p>Notesets uses the power of machine learning to make your study  sessions (a lot) easier.</p>
         <NotifyContainer>
-          
-            <SizedInput
-              placeholder="Enter your email"
-              type="text" value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-            />
-            <PrimaryButton type={"submit"} onClick={(e) => {
-              e.preventDefault();
-              Axios.post("/api/notify", {
-                email
-              }).then(res => {
-                notificationContext.setNotification(NotificationType.SUCCESS, res.data.message)
-                setEmail("")
-              }).catch(err => {
-                notificationContext.setNotification(NotificationType.WARN, err.response.data.message)
-                setEmail("")
-              })
-            }}><strong>Notify me</strong></PrimaryButton>
-          <SecondaryButton onClick={() => router.push("/faq")}><strong>FAQ</strong></SecondaryButton>
+
+          <SizedInput
+            placeholder="Enter your email"
+            type="text" value={email}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          />
+          <PrimaryButton type={"submit"} onClick={(e) => {
+            e.preventDefault();
+            Axios.post("/api/notify", {
+              email
+            }).then(res => {
+              notificationContext.setNotification(NotificationType.SUCCESS, res.data.message)
+              setEmail("")
+            }).catch(err => {
+              notificationContext.setNotification(NotificationType.WARN, err.response.data.message)
+              setEmail("")
+            })
+          }}><strong>Notify me</strong></PrimaryButton>
+          <SecondaryButton onClick={(e) => {
+            e.preventDefault();
+            router.push("/faq")
+          }}><strong>FAQ</strong></SecondaryButton>
         </NotifyContainer>
       </ContentContainer>
       <SplashImage src="/img/home-splash.png" alt="" />
