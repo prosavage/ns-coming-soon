@@ -15,6 +15,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(409).json({ message: "Already registered email." })
     return;
   }
-  db.collection("users").insert({ email });
+  db.collection("users").insertOne({ email });
   res.status(200).json({ message: "Successfully registered email." })
 }
