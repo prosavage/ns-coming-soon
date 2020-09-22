@@ -1,10 +1,17 @@
 import Head from 'next/head'
 import styled from "styled-components";
 import PropsTheme from '../styles/theme/PropsTheme';
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import NotificationContainer from '../context/NotificationContext';
+import NotificationType from '../context/NotificationType';
+import Axios from 'axios';
 export default function Home() {
 
   const router = useRouter();
+
+  const [email, setEmail] = useState("")
+  const notificationContext = NotificationContainer.useContainer();
 
   return (
     <Wrapper>
@@ -13,12 +20,28 @@ export default function Home() {
         <br />
         <p>Notesets uses the power of machine learning to make your study  sessions (a lot) easier.</p>
         <NotifyContainer>
-          <SizedInput placeholder="Enter your email" type="text" />
-          <PrimaryButton><strong>Notify me</strong></PrimaryButton>
+          
+            <SizedInput
+              placeholder="Enter your email"
+              type="text" value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            />
+            <PrimaryButton type={"submit"} onClick={(e) => {
+              e.preventDefault();
+              Axios.post("/api/notify", {
+                email
+              }).then(res => {
+                notificationContext.setNotification(NotificationType.SUCCESS, res.data.message)
+                setEmail("")
+              }).catch(err => {
+                notificationContext.setNotification(NotificationType.WARN, err.response.data.message)
+                setEmail("")
+              })
+            }}><strong>Notify me</strong></PrimaryButton>
           <SecondaryButton onClick={() => router.push("/faq")}><strong>FAQ</strong></SecondaryButton>
         </NotifyContainer>
       </ContentContainer>
-      <SplashImage src="/img/home-splash.png" alt=""/>
+      <SplashImage src="/img/home-splash.png" alt="" />
     </Wrapper>
   )
 }
@@ -58,7 +81,7 @@ const ContentContainer = styled.div`
   }
 `
 
-const NotifyContainer = styled.div`
+const NotifyContainer = styled.form`
   display: flex;
   padding-top: 50px;
   width: 100%;

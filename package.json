@@ -8,15 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "babel-plugin-styled-components": "^1.11.1",
     "express-validator": "^6.6.1",
     "framer-motion": "^2.6.15",
     "mongodb": "^3.6.2",
     "next": "9.5.3",
+    "node-fetch": "^2.6.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-feather": "^2.0.8",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "unstated-next": "^1.1.0"
   },
   "devDependencies": {
     "@types/mongodb": "^3.5.27",

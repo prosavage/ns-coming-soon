@@ -6,7 +6,10 @@ interface ITheme {
     color: string,
     colorSecondary: string,
     accentColor: string,
-    accentColorSecondary: string
+    accentColorSecondary: string,
+    notifSuccessColor: string,
+    notifWarnColor: string,
+    notifTextColor: string
 }
 
 export default ITheme;

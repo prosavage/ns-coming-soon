@@ -8,8 +8,10 @@ const LightTheme: ITheme = {
     color: "black",
     colorSecondary: "#999999",
     accentColor: "#C679E3",
-    accentColorSecondary: "#9957B1"
-
+    accentColorSecondary: "#9957B1",
+    notifSuccessColor: "#49f385",
+    notifWarnColor: "#D1495B",
+    notifTextColor: "white"
 }
 
 export default LightTheme;

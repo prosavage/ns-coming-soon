@@ -1,11 +1,15 @@
 import { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, ThemeContext } from "styled-components";
 import LightTheme from "../styles/theme/LightTheme";
 import Navbar from "./../components/ui/Navbar";
 import GlobalStyle from "../styles/GlobalStyle";
 import { Sun, Moon } from "react-feather";
 import DarkTheme from "../styles/theme/DarkTheme";
 import PropsTheme from "../styles/theme/PropsTheme";
+import NotificationContainer from "../context/NotificationContext";
+import NotificationType from "../context/NotificationType";
+import ITheme from "../styles/theme/ITheme";
+import { useContext } from "react";
 function MyApp({ Component, pageProps }) {
 
   const [darkTheme, setDarkTheme] = useState<Boolean>(false);
@@ -17,8 +21,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <Wrapper>
       <ThemeProvider theme={getTheme()}>
-        <GlobalStyle />
-        <Navbar />
+        <NotificationContainer.Provider>
+          <GlobalStyle />
+          <Navbar />
           <PageContainer>
             <Component {...pageProps} />
             <PageBackgroundImage alt="" />
@@ -30,13 +35,51 @@ function MyApp({ Component, pageProps }) {
               {darkTheme ? <Moon /> : <Sun />}
             </ThemeToggleContainer>
           </PageContainer>
-        <BackgroundLine>
-          <BackgroundLineLeft />
-          <BackgroundLineRight />
-        </BackgroundLine>
+          <NotificationWrapper />
+          <BackgroundLine>
+            <BackgroundLineLeft />
+            <BackgroundLineRight />
+          </BackgroundLine>
+
+        </NotificationContainer.Provider>
       </ThemeProvider>
     </Wrapper>
   );
+}
+
+function NotificationWrapper(props) {
+  const notifContext = NotificationContainer.useContainer();
+  const themeContext: ITheme = useContext(ThemeContext)
+
+  const NotifyMessage = styled.div`
+    position: fixed;
+    bottom: 30px;
+    left: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: ${(props) => props.color};
+    color: ${(props: PropsTheme) => props.theme.notifTextColor};
+    padding: 10px;
+    border-radius: 5px;
+    z-index:2;
+`
+
+  const getColor = () => {
+    console.log(notifContext.notif)
+    return notifContext.notif.type === NotificationType.SUCCESS ? themeContext.notifSuccessColor : themeContext.notifWarnColor
+  }
+
+  return (
+    <>
+      {console.log(notifContext.notif)}
+      {notifContext.notif.type !== undefined && <NotifyMessage color={getColor()}>
+        {notifContext.notif.message}
+      </NotifyMessage>}
+    </>
+  )
 }
 
 
@@ -111,6 +154,8 @@ const ThemeToggleContainer = styled.div`
   /* Usability */
   cursor: pointer;
 `
+
+
 
 
 export default MyApp;
