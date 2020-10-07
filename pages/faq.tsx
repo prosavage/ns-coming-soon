@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Head from "next/head";
-import DropDownQuestion from "../components/FaqDropDownQuestion";
+import DropDownQuestion from "./../components/FaqDropDownQuestion";
 
 export default function FAQ(props) {
     return <Wrapper>
