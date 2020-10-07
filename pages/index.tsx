@@ -61,7 +61,7 @@ const Wrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  @media(max-width: 1300px) {
+  @media(max-width: 1200px) {
     flex-direction: column;
   }
 

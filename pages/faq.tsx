@@ -48,6 +48,10 @@ const Wrapper = styled.div`
     @media(max-width: 700px) {
         align-items: flex-start;
     }
+
+    @media(max-height: 720px) {
+        padding-top: 120px;
+    }
 `
 
 const ContentContainer = styled.div`
