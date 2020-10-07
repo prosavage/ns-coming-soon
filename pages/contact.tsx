@@ -3,10 +3,28 @@ import PropsTheme from "../styles/theme/PropsTheme";
 import { Download } from "react-feather";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { useState } from "react";
+import Axios from "axios";
+import NotificationType from "../context/NotificationType";
+import NotificationContainer from "../context/NotificationContext";
 
 export default function Contact(props) {
 
   const router = useRouter();
+  const emptyContact = { name: "", email: "", message: "" }
+  const [contact, setContact] = useState(emptyContact);
+  const notificationContext = NotificationContainer.useContainer();
+
+  const submitMessage = (e) => {
+    e.preventDefault();
+    Axios.post("/api/contact", contact).then(res => {
+      notificationContext.setNotification(NotificationType.SUCCESS, res.data.message)
+      setContact(emptyContact)
+    }).catch(err => {
+      notificationContext.setNotification(NotificationType.WARN, err.response.data.message)
+      setContact(emptyContact)
+    })
+  }
 
   return <Wrapper>
     <Head>
@@ -15,14 +33,14 @@ export default function Contact(props) {
     <ContentContainer>
       <h1>Press Kit</h1>
       <p>Interested in writing about us? We’re flattered. Here’s a little something to help you represent our brand.</p>
-      <SecondaryButton onClick={() => router.push("/branding/branding-kit.zip")}><Download/><strong>Download Press Kit</strong></SecondaryButton>
+      <SecondaryButton onClick={() => router.push("/branding/branding-kit.zip")}><Download /><strong>Download Press Kit</strong></SecondaryButton>
     </ContentContainer>
     <ContentContainer>
       <h1>Contact us</h1>
-      <ContactInput placeholder="Name" type="text" />
-      <ContactInput placeholder="Email address" type="text" />
-      <ContactTextArea rows={7} placeholder="Your message" />
-      <PrimaryButton><strong>Send It &rarr;</strong></PrimaryButton>
+      <ContactInput placeholder="Name" type="text" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} />
+      <ContactInput placeholder="Email address" type="text" value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} />
+      <ContactTextArea rows={7} placeholder="Your message" value={contact.message} onChange={(e) => setContact({ ...contact, message: e.target.value })} />
+      <PrimaryButton onClick={submitMessage}><strong>Send It &rarr;</strong></PrimaryButton>
     </ContentContainer>
   </Wrapper>
 }

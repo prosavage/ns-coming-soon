@@ -10,3 +10,4 @@ const filterRequest = (req: NextApiRequest, res: NextApiResponse, type: RequestT
 }
 
 export default filterRequest;
+
